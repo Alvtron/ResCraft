@@ -1,0 +1,54 @@
+﻿<ContentDialog
+    x:Class="ResourceCraft.Uwp.Dialogs.SignInDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ResourceCraft.Uwp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:utilities="using:ResourceCraft.Uwp.Utilities"
+    xmlns:credentials="using:Windows.Security.Credentials"
+    DataContext="{x:Bind ViewModel, Mode=OneWay}">
+
+    <StackPanel Padding="48" Spacing="20">
+        <StackPanel Spacing="24">
+            <StackPanel Spacing="12">
+                <TextBlock Text="Choose an account" Style="{StaticResource SubtitleTextBlockStyle}" />
+                <ListView 
+                    Name="StoredUsersList"
+                    ItemsSource="{x:Bind ViewModel.Credentials, Mode=OneWay}"
+                    IsItemClickEnabled="True"
+                    utilities:ItemClickCommand.Command="{x:Bind ViewModel.LogInCommand, Mode=OneWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="credentials:PasswordCredential">
+                            <StackPanel Spacing="20" Orientation="Horizontal">
+                                <PersonPicture Width="30" VerticalAlignment="Center" />
+                                <TextBlock Text="{x:Bind UserName, Mode=OneWay}" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <HyperlinkButton Content="Delete all users" Command="{x:Bind ViewModel.DeleteUsersCommand}"/>
+            </StackPanel>
+            <Pivot>
+                <!-- Sign in -->
+                <PivotItem Header="Sign in" Padding="0,12,0,0">
+                    <StackPanel Spacing="12">
+                        <TextBox InputScope="Text" PlaceholderText="E-mail" Text="{x:Bind ViewModel.SignInEmail, Mode=TwoWay}"/>
+                        <PasswordBox PlaceholderText="Passord" PasswordChar="*" Password="{x:Bind ViewModel.SignInPassword, Mode=TwoWay}"/>
+                        <Button Content="Sign in" Command="{x:Bind ViewModel.SignInCommand}"/>
+                    </StackPanel>
+                </PivotItem>
+                <!-- Sign up -->
+                <PivotItem Header="Sign up" Padding="0,12,0,0">
+                    <StackPanel Spacing="12">
+                        <TextBox Text="{x:Bind ViewModel.SignUpEmail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{x:Bind ViewModel.SignUpEmailBorder, Mode=OneWay}" InputScope="EmailSmtpAddress" PlaceholderText="E-mail"/>
+                        <TextBox Text="{x:Bind ViewModel.SignUpName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{x:Bind ViewModel.SignUpNameBorder, Mode=OneWay}" InputScope="Text" PlaceholderText="User name"/>
+                        <PasswordBox Password="{x:Bind ViewModel.SignUpPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{x:Bind ViewModel.SignUpPasswordBorder, Mode=OneWay}" PlaceholderText="Passord" PasswordChar="*"/>
+                        <PasswordBox Password="{x:Bind ViewModel.SignUpReEnterPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderBrush="{x:Bind ViewModel.SignUpReEnterPasswordBorder, Mode=OneWay}" PlaceholderText="Re-enter password" PasswordChar="*"/>
+                        <Button Content="Sign up" Command="{x:Bind ViewModel.SignUpCommand}"/>
+                    </StackPanel>
+                </PivotItem>
+            </Pivot>
+        </StackPanel>
+        <TextBlock Text="{x:Bind ViewModel.ErrorMessage, Mode=OneWay}" Foreground="Red" />
+    </StackPanel>
+</ContentDialog>

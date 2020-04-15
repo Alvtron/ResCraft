@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="ResourceCraft.Uwp.Views.AppSettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ResourceCraft.Uwp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Orientation="Vertical" Padding="48" Spacing="8">
+        <TextBlock Text="General" Style="{StaticResource SubtitleTextBlockStyle}"/>
+        <TextBlock Text="Theme"/>
+        <RadioButton Content="Light" GroupName="Theme"/>
+        <RadioButton Content="Dark" GroupName="Theme"/>
+        <RadioButton Content="Default" GroupName="Theme"/>
+        <HyperlinkButton Content="Change default theme" />
+        <TextBlock Text="Accounts" Style="{StaticResource SubtitleTextBlockStyle}"/>
+        <ToggleSwitch Header="Stay signed in" IsOn="{x:Bind ViewModel.AppSettings.StaySignedIn, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+    </StackPanel>
+</Page>

@@ -1,0 +1,32 @@
+﻿<UserControl
+    x:Class="ResourceCraft.Uwp.Controls.ResourcePackListItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ResourceCraft.Uwp.Controls"
+    xmlns:converters="using:ResourceCraft.Uwp.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <converters:ColorConverter x:Key="ColorConverter" />
+    </UserControl.Resources>
+
+    <Grid Height="100" Width="auto" HorizontalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <local:AsyncImage Grid.Column="0" File="{x:Bind ResourcePack.Banner, Mode=OneWay}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Stretch="UniformToFill" />
+        <StackPanel Grid.Column="1" HorizontalAlignment="Left" Margin="8" VerticalAlignment="Center">
+            <TextBlock Text="{x:Bind ResourcePack.Name, Mode=OneWay}" Foreground="White" />
+            <TextBlock Name="CaptionBlock" Foreground="DimGray" />
+        </StackPanel>
+        <StackPanel Grid.Column="2" Margin="8" VerticalAlignment="Center">
+            <Button Content="Subscribe" Width="auto" HorizontalAlignment="Stretch" />
+        </StackPanel>
+    </Grid>
+</UserControl>

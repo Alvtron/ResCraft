@@ -1,0 +1,53 @@
+﻿<UserControl
+    x:Class="ResourceCraft.Uwp.Controls.EditableBanner"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ResourceCraft.Uwp.Controls"
+    xmlns:converters="using:ResourceCraft.Uwp.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="100"
+    d:DesignWidth="500">
+
+    <UserControl.Resources>
+        <converters:VisibilityConverter x:Key="VisibillityConverter" />
+    </UserControl.Resources>
+
+    <Grid Width="{x:Bind Width, Mode=OneWay}" Height="{x:Bind Height, Mode=OneWay}">
+        <Rectangle
+            RadiusX="12"
+            RadiusY="12"
+            Fill="DimGray"
+            Height="{x:Bind Height, Mode=OneWay}"
+            Width="{x:Bind Width, Mode=OneWay}" />
+        <TextBlock Text="Banner" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" />
+        <Border CornerRadius="12">
+            <local:AsyncImage
+                File="{x:Bind PublicProfile.Banner, Mode=OneWay}"
+                Height="{x:Bind Height, Mode=OneWay}"
+                Width="{x:Bind Width, Mode=OneWay}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Stretch="UniformToFill"/>
+        </Border>
+        <Button
+            Visibility="{x:Bind IsEditable, Mode=OneWay}"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Padding="-0"
+            Background="Transparent">
+            <Button.Flyout>
+                <MenuFlyout>
+                    <MenuFlyoutItem Icon="Upload" Text="Upload new" Command="{x:Bind UploadImageCommand}"/>
+                    <MenuFlyoutItem Icon="Crop" Text="Crop" Command="{x:Bind CropImageCommand}"/>
+                    <MenuFlyoutItem Icon="Edit" Text="Manage" Command="{x:Bind EditImagesCommand}"/>
+                </MenuFlyout>
+            </Button.Flyout>
+            <Grid Width="45" Height="45">
+                <Ellipse Fill="Gray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                <SymbolIcon Symbol="Edit" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+        </Button>
+    </Grid>
+</UserControl>

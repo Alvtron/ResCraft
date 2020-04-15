@@ -1,0 +1,156 @@
+﻿<Page
+    x:Class="ResourceCraft.Uwp.Views.UserPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ResourceCraft.Uwp"
+    xmlns:Model="using:ResourceCraft.Model"
+    xmlns:xaml="using:ResourceCraft.Uwp.Xaml"
+    xmlns:controls="using:ResourceCraft.Uwp.Controls"
+    xmlns:Converters="using:ResourceCraft.Uwp.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    x:Name="ViewModelRoot">
+
+    <Page.Resources>
+        <Converters:DateTimeToDateTimeOffsetConverter x:Key="DateTimeConverter" />
+        <Converters:DateTimeToStringConverter x:Key="DateTimeToStringConverter" />
+        <Converters:VisibilityConverter x:Key="VisibillityConverter" />
+        <Converters:InverseVisibilityConverter x:Key="BooleanInverter" />
+        <Converters:ExperienceConverter x:Key="ExperienceConverter" />
+        <Converters:ColorConverter x:Key="ColorConverter" />
+    </Page.Resources>
+
+    <ScrollViewer>
+        <StackPanel HorizontalAlignment="Left">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200" />
+                </Grid.RowDefinitions>
+                <!-- Banner -->
+                <controls:AsyncImage
+                    Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    Height="200"
+                    File="{x:Bind ViewModel.Model.Banner, Mode=OneWay}"
+                    Stretch="UniformToFill"
+                    Visibility="{x:Bind ViewModel.Model.HasBanners, Converter={StaticResource VisibillityConverter}, Mode=OneWay}"
+                    RelativePanel.AlignTopWithPanel="True"
+                    RelativePanel.AlignHorizontalCenterWithPanel="True" />
+                <controls:AsyncPersonPicture
+                    Margin="24,-24"
+                    Grid.RowSpan="3"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalAlignment="Bottom"
+                    Width="200"
+                    Height="200"
+                    File="{x:Bind ViewModel.Model.ProfilePicture, Mode=OneWay}"
+                    Inititals="{x:Bind ViewModel.Model.Initials, Mode=OneWay}" />
+                <StackPanel
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="24"
+                    VerticalAlignment="Bottom">
+                    <StackPanel Orientation="Horizontal" Spacing="12">
+                        <!-- Username -->
+                        <TextBlock Text="{x:Bind ViewModel.Model.UserName, Mode=OneWay}" FontSize="48"/>
+                        <!-- Add friend, report -->
+                        <Button
+                            Command="{x:Bind ViewModel.BefriendCommand}"
+                            Background="Transparent"
+                            Margin="0,0,0,-10"
+                            Visibility="{x:Bind ViewModel.IsUserAuthor, Mode=OneWay, Converter={StaticResource BooleanInverter}}">
+                            <SymbolIcon Symbol="AddFriend" />
+                        </Button>
+                        <Button
+                            Command="{x:Bind ViewModel.ReportCommand}"
+                            Background="Transparent"
+                            Margin="0,0,0,-10"
+                            Visibility="{x:Bind ViewModel.IsUserAuthor, Mode=OneWay, Converter={StaticResource BooleanInverter}}">
+                            <SymbolIcon Symbol="Flag" />
+                        </Button>
+                    </StackPanel>
+                    <!-- Experience bar -->
+                    <Grid MinWidth="250" MaxWidth="500" HorizontalAlignment="Left">
+                        <Border CornerRadius="10">
+                            <ProgressBar
+                                Height="20"
+                                Value="{x:Bind ViewModel.Model.Experience, Mode=OneWay, Converter={StaticResource ExperienceConverter}}"
+                                Maximum="100"
+                                VerticalAlignment="Top"
+                                Background="Gray"
+                                Foreground="{x:Bind ViewModel.Model.Color, Mode=OneWay, Converter={StaticResource ColorConverter}}"/>
+                        </Border>
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="0,0,0,2"
+                            FontSize="12"
+                            FontWeight="Thin"
+                            Foreground="White">
+                            <Run Text="{x:Bind ViewModel.Model.Experience, Mode=OneWay}" />
+                            <Run Text="/" />
+                            <Run Text="{x:Bind ViewModel.Model.NextExp, Mode=OneWay}" />
+                        </TextBlock>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+            
+            <Pivot Padding="48,32">
+                <!-- About -->
+                <PivotItem Header="About">
+                    <StackPanel Spacing="24" Padding="24">
+                        <Grid RowSpacing="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="144" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <!-- Signed up -->
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Member Since" />
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{x:Bind ViewModel.Model.Created, Mode=OneWay, ConverterParameter='MMMMM dd yyyy', Converter={StaticResource DateTimeToStringConverter}}" />
+                            <!-- Country -->
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Country" />
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{x:Bind ViewModel.Model.Country, Mode=OneWay}" />
+                            <!-- Birtday -->
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Birthday" />
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{x:Bind ViewModel.Model.Birthday, Mode=OneWay, ConverterParameter='MMMMM dd yyyy', Converter={StaticResource DateTimeToStringConverter}}" />
+                            <!-- Website -->
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Website" />
+                            <TextBlock Grid.Row="4" Grid.Column="1">
+                                <Hyperlink NavigateUri="{x:Bind ViewModel.Model.WebsiteUri, Mode=OneWay}">
+                                    <Run Text="{x:Bind ViewModel.Model.Website, Mode=OneWay}" />
+                                </Hyperlink>
+                            </TextBlock>
+                            <!-- Bio -->
+                            <StackPanel Grid.Row="5" Grid.ColumnSpan="2">
+                                <xaml:RichTextBox Header="Bio" Rtf="{x:Bind ViewModel.Model.Bio, Mode=OneWay}" />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </PivotItem>
+                <!-- Friends -->
+                <PivotItem Header="Friends" Padding="24">
+                    <controls:UserGridView Users="{x:Bind ViewModel.Model.Friends, Mode=OneWay}" />
+                </PivotItem>
+                <!-- Activity -->
+                <PivotItem Header="Activity" Padding="24">
+                    <controls:ActivityListView LogsSource="{x:Bind ViewModel.Model.Logs, Mode=OneWay}" />
+                </PivotItem>
+            </Pivot>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

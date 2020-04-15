@@ -1,0 +1,558 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{5A2AFDA0-1FC1-436A-A9C4-31B7C6B39ADA}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ResourceCraft.Uwp</RootNamespace>
+    <AssemblyName>ResourceCraft.Uwp</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17134.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
+    <PackageCertificateKeyFile>ResourceCraft.Uwp_TemporaryKey.pfx</PackageCertificateKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
+    <OutputPath>bin\ARM64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ActivityListView.xaml.cs">
+      <DependentUpon>ActivityListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AsyncImage.xaml.cs">
+      <DependentUpon>AsyncImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AsyncPersonPicture.xaml.cs">
+      <DependentUpon>AsyncPersonPicture.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BindableRichTextBlock.xaml.cs">
+      <DependentUpon>BindableRichTextBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PostBlock.xaml.cs">
+      <DependentUpon>PostBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PostListView.xaml.cs">
+      <DependentUpon>PostListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ResourcePackListItem.xaml.cs">
+      <DependentUpon>ResourcePackListItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ResourcePackGridItem.xaml.cs">
+      <DependentUpon>ResourcePackGridItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ResourcePackGridView.xaml.cs">
+      <DependentUpon>ResourcePackGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ResourceAuthorBlock.xaml.cs">
+      <DependentUpon>ResourceAuthorBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ResourceCommentsPanel.xaml.cs">
+      <DependentUpon>ResourceCommentsPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ResourceSearchView.xaml.cs">
+      <DependentUpon>ResourceSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditableProfilePicture.xaml.cs">
+      <DependentUpon>EditableProfilePicture.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditableBanner.xaml.cs">
+      <DependentUpon>EditableBanner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Editor.xaml.cs">
+      <DependentUpon>Editor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UserPictureItem.xaml.cs">
+      <DependentUpon>UserPictureItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ReplyBlock.xaml.cs">
+      <DependentUpon>ReplyBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ReplyListView.xaml.cs">
+      <DependentUpon>ReplyListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SaveResetPanel.xaml.cs">
+      <DependentUpon>SaveResetPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ScreenshotGridView.xaml.cs">
+      <DependentUpon>ScreenshotGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UserGridView.xaml.cs">
+      <DependentUpon>UserGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\ColorConverter.cs" />
+    <Compile Include="Converters\DateTimeToDateTimeOffsetConverter.cs" />
+    <Compile Include="Converters\DateTimeToDurationString.cs" />
+    <Compile Include="Converters\DateTimeToStringConverter.cs" />
+    <Compile Include="Converters\ExperienceConverter.cs" />
+    <Compile Include="Converters\ImageConverter.cs" />
+    <Compile Include="Converters\InverseBooleanConverter.cs" />
+    <Compile Include="Converters\InverseVisibilityConverter.cs" />
+    <Compile Include="Converters\IsAuthorVisibilityConverter.cs" />
+    <Compile Include="Converters\VisibilityConverter.cs" />
+    <Compile Include="Dialogs\AddResourcePackDialog.xaml.cs">
+      <DependentUpon>AddResourcePackDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\AddReplyDialog.xaml.cs">
+      <DependentUpon>AddReplyDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\AddVideoDialog.xaml.cs">
+      <DependentUpon>AddVideoDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\BannerCroppingDialog.xaml.cs">
+      <DependentUpon>BannerCroppingDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\BannerManagerDialog.xaml.cs">
+      <DependentUpon>BannerManagerDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ColorPickerDialog.xaml.cs">
+      <DependentUpon>ColorPickerDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\LoadingDialog.xaml.cs">
+      <DependentUpon>LoadingDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ProfilePictureCroppingDialog.xaml.cs">
+      <DependentUpon>ProfilePictureCroppingDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ProfilePicturesManagerDialog.xaml.cs">
+      <DependentUpon>ProfilePicturesManagerDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ReplyDialog.xaml.cs">
+      <DependentUpon>ReplyDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ReportDialog.xaml.cs">
+      <DependentUpon>ReportDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\SignInDialog.xaml.cs">
+      <DependentUpon>SignInDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\UploadImageDialog.xaml.cs">
+      <DependentUpon>UploadImageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AppSettings.cs" />
+    <Compile Include="Services\AuthService.cs" />
+    <Compile Include="Services\CredentialService.cs" />
+    <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Services\NotificationService.cs" />
+    <Compile Include="Services\ResourcePackService.cs" />
+    <Compile Include="Utilities\CodeFormatter.cs" />
+    <Compile Include="Utilities\ImageCropper.cs" />
+    <Compile Include="Utilities\ImageManager.cs" />
+    <Compile Include="Utilities\ImageUtilities.cs" />
+    <Compile Include="Utilities\ItemClickCommand.cs" />
+    <Compile Include="Utilities\RelayCommand.cs" />
+    <Compile Include="Utilities\StorageUtilities.cs" />
+    <Compile Include="ViewModels\AddResourcePackViewModel.cs" />
+    <Compile Include="ViewModels\AppSettingsViewModel.cs" />
+    <Compile Include="ViewModels\ContentViewModel.cs" />
+    <Compile Include="ViewModels\DialogViewModel.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ModelSettingsViewModel.cs" />
+    <Compile Include="ViewModels\ResourcePackSettingsViewModel.cs" />
+    <Compile Include="ViewModels\ResourcePacksViewModel.cs" />
+    <Compile Include="ViewModels\ResourcePackViewModel.cs" />
+    <Compile Include="ViewModels\SignInViewModel.cs" />
+    <Compile Include="ViewModels\UserSettingsViewModel.cs" />
+    <Compile Include="ViewModels\UsersViewModel.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
+    <Compile Include="Views\AppSettingsPage.xaml.cs">
+      <DependentUpon>AppSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DownloadVersionsPage.xaml.cs">
+      <DependentUpon>DownloadVersionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MediaPage.xaml.cs">
+      <DependentUpon>MediaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModsPage.xaml.cs">
+      <DependentUpon>ModsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ResourcePackPage.xaml.cs">
+      <DependentUpon>ResourcePackPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ResourcePackSettingsPage.xaml.cs">
+      <DependentUpon>ResourcePackSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ResourcePacksPage.xaml.cs">
+      <DependentUpon>ResourcePacksPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserPage.xaml.cs">
+      <DependentUpon>UserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserSettingsPage.xaml.cs">
+      <DependentUpon>UserSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UsersPage.xaml.cs">
+      <DependentUpon>UsersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Xaml\BindableRichEditBox.cs" />
+    <Compile Include="Xaml\RichTextBox.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="ResourceCraft.Uwp_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Controls\ActivityListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\AsyncImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AsyncPersonPicture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\BindableRichTextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\PostBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PostListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ResourcePackListItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ResourcePackGridItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ResourcePackGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ResourceAuthorBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ResourceCommentsPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ResourceSearchView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\EditableProfilePicture.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\EditableBanner.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Editor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\UserPictureItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ReplyBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ReplyListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SaveResetPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ScreenshotGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\UserGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\AddResourcePackDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\AddReplyDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\AddVideoDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\BannerCroppingDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\BannerManagerDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\ColorPickerDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\LoadingDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\ProfilePictureCroppingDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\ProfilePicturesManagerDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\ReplyDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\ReportDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\SignInDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\UploadImageDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AppSettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DownloadVersionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MediaPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ModsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ResourcePackPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ResourcePackSettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ResourcePacksPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserSettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UsersPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FirebaseStorage.net">
+      <Version>1.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="FireSharp">
+      <Version>2.0.4</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.2.3</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ResourceCraft.BackEnd.MinecraftUtilities\ResourceCraft.BackEnd.MinecraftUtilities.csproj">
+      <Project>{64671bfd-adf8-4d22-9e0e-c873d8610ab8}</Project>
+      <Name>ResourceCraft.BackEnd.MinecraftUtilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ResourceCraft.DataAccess\ResourceCraft.DataAccess.csproj">
+      <Project>{a6cb47a0-9e68-48cd-b122-20260825143b}</Project>
+      <Name>ResourceCraft.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ResourceCraft.Extensions\ResourceCraft.Extensions.csproj">
+      <Project>{17695532-2645-44eb-8c22-41534c3ea75f}</Project>
+      <Name>ResourceCraft.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ResourceCraft.Minecraft\ResourceCraft.Minecraft.csproj">
+      <Project>{e713b536-e455-4605-8f15-9ee7827f5294}</Project>
+      <Name>ResourceCraft.Minecraft</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ResourceCraft.Model\ResourceCraft.Model.csproj">
+      <Project>{c566e561-d911-4beb-99a5-effd9e546a3c}</Project>
+      <Name>ResourceCraft.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ResourceCraft.Utilities\ResourceCraft.Utilities.csproj">
+      <Project>{db11dd19-e526-4192-a37d-7b18e51ca083}</Project>
+      <Name>ResourceCraft.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

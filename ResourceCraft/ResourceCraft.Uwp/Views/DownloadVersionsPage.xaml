@@ -1,0 +1,20 @@
+﻿<Page
+    x:Class="ResourceCraft.Uwp.Views.DownloadVersionsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ResourceCraft.Uwp.Views"
+    xmlns:converters="using:ResourceCraft.Uwp.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Padding="48" Spacing="20">
+        <StackPanel Orientation="Horizontal" Spacing="20">
+            <ComboBox IsTextSearchEnabled="True" Name="VersionBox" Width="125" PlaceholderText="Version" ItemsSource="{x:Bind Versions}" />
+            <CheckBox Name="DownloadAllCheckbox" Content="Download All"/>
+            <CheckBox Name="ExtractFiles" Content="Extract .zip-file" />
+            <Button Name="DownloadButton" Content="Download" Click="DownloadButton_Click" />
+        </StackPanel>
+    </StackPanel>
+</Page>

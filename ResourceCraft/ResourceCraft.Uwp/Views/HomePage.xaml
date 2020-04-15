@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="ResourceCraft.Uwp.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ResourceCraft.Uwp.Views"
+    xmlns:xaml="using:ResourceCraft.Uwp.Xaml"
+    xmlns:controls="using:ResourceCraft.Uwp.Controls"
+    xmlns:converters="using:ResourceCraft.Uwp.Converters"
+    xmlns:model="using:ResourceCraft.Model"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+    <Page.Resources>
+        <converters:DateTimeToStringConverter x:Key="DateTimeToStringConverter" />
+        <converters:VisibilityConverter x:Key="VisibillityConverter" />
+    </Page.Resources>
+
+    <StackPanel Padding="48" Spacing="20">
+        <controls:UserGridView Header="New Users" Users="{x:Bind ViewModel.NewestUsers, Mode=OneWay}" Loaded="NewUsersGridView_Loaded" />
+    </StackPanel>
+</Page>

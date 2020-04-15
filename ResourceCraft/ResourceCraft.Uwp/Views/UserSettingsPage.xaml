@@ -1,0 +1,106 @@
+﻿<Page
+    x:Class="ResourceCraft.Uwp.Views.UserSettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ResourceCraft.Uwp"
+    xmlns:model="using:ResourceCraft.Model"
+    xmlns:xaml="using:ResourceCraft.Uwp.Xaml"
+    xmlns:controls="using:ResourceCraft.Uwp.Controls"
+    xmlns:converters="using:ResourceCraft.Uwp.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Name="ViewModelRoot"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{x:Bind ViewModel}">
+
+    <Page.Resources>
+        <converters:DateTimeToDateTimeOffsetConverter x:Key="DateTimeConverter" />
+        <converters:ColorConverter x:Key="ColorConverter" />
+        <converters:VisibilityConverter x:Key="VisibillityConverter" />
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <ScrollViewer Grid.ColumnSpan="3">
+            <Pivot Margin="48">
+                <!-- General -->
+                <PivotItem Header="General">
+                    <StackPanel Spacing="8">
+                        <!-- Photo -->
+                        <TextBlock Text="Profile Photo" />
+                        <controls:EditableProfilePicture PublicProfile="{x:Bind ViewModel.Model}" Size="100" HorizontalAlignment="Left" IsEditable="True" />
+                        <!-- Banner -->
+                        <TextBlock Text="Banner" />
+                        <controls:EditableBanner PublicProfile="{x:Bind ViewModel.Model}" Width="800" HorizontalAlignment="Left" IsEditable="True" />
+                        <!-- Other -->
+                        <TextBox Header="User name" Text="{x:Bind ViewModel.Model.UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox Header="First name" Text="{x:Bind ViewModel.Model.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox Header="Last name" Text="{x:Bind ViewModel.Model.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox Header="Country" Text="{x:Bind ViewModel.Model.Country, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <DatePicker Header="Birthday" Date="{x:Bind ViewModel.Model.Birthday, Converter={StaticResource DateTimeConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox Header="Website" InputScope="Url" Text="{x:Bind ViewModel.Model.Website, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                </PivotItem>
+                <!-- Bio -->
+                <PivotItem Header="Bio">
+                    <StackPanel>
+                        <controls:Editor Height="200" Rtf="{x:Bind ViewModel.Model.Bio, Mode=TwoWay}" />
+                    </StackPanel>
+                </PivotItem>
+                <!-- Color -->
+                <PivotItem Header="Color">
+                    <StackPanel Spacing="8">
+                        <Ellipse Height="100" Width="100" HorizontalAlignment="Left" Fill="{x:Bind ViewModel.Model.Color, Converter={StaticResource ColorConverter}, Mode=OneWay}" />
+                        <Button Content="Change Color" Command="{x:Bind ViewModel.CreateNewColorCommand}" />
+                    </StackPanel>
+                </PivotItem>
+                <!-- Privacy -->
+                <PivotItem Header="Privacy">
+                    <StackPanel Spacing="8">
+                        <ToggleSwitch Header="Hide my profile" OffContent="No" OnContent="Yes" />
+                    </StackPanel>
+                </PivotItem>
+                <PivotItem Header="Details">
+                    <StackPanel Spacing="8">
+                        <!-- Info -->
+                        <TextBlock Foreground="Gray">
+                                <Run Text="ID:" />
+                                <Run Text="{x:Bind ViewModel.Model.Key}" />
+                        </TextBlock>
+                        <TextBlock Foreground="Gray">
+                                <Run Text="Signed up:" />
+                                <Run Text="{x:Bind ViewModel.Model.Created}" />
+                        </TextBlock>
+                        <TextBlock Foreground="Gray">
+                                <Run Text="Signed in:" />
+                                <Run Text="{x:Bind ViewModel.Model.SignedIn}" />
+                        </TextBlock>
+                        <TextBlock Foreground="Gray">
+                                <Run Text="Number of friends:" />
+                                <Run Text="{x:Bind ViewModel.Model.Friends.Count}" />
+                        </TextBlock>
+                    </StackPanel>
+                </PivotItem>
+            </Pivot>
+        </ScrollViewer>
+        <RelativePanel Grid.Column="1" Background="DimGray" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,16" MinWidth="400" Padding="8" Visibility="{x:Bind ViewModel.IsModelChanged, Mode=OneWay}">
+            <TextBlock Name="SaveChangesMessage" Text="You have unsaved changes!" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" />
+            <HyperlinkButton Name="ResetButton" Command="{x:Bind ViewModel.ResetCommand}" RelativePanel.LeftOf="SaveButton" Margin="0,0,24,0" RelativePanel.AlignVerticalCenterWithPanel="True">
+                <TextBlock Text="Reset" Foreground="White" />
+            </HyperlinkButton>
+            <Button
+                Name="SaveButton"
+                Background="{StaticResource SaveButtonColor}"
+                Foreground="White"
+                Content="Save Changes"
+                Command="{x:Bind ViewModel.SaveCommand}"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.AlignVerticalCenterWithPanel="True" />
+        </RelativePanel>
+    </Grid>
+</Page>

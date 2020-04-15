@@ -1,0 +1,72 @@
+﻿<UserControl
+    x:Class="ResourceCraft.Uwp.Controls.ReplyBlock"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ResourceCraft.Uwp.Controls" 
+    xmlns:controls="using:ResourceCraft.Uwp.Controls"
+    xmlns:xaml="using:ResourceCraft.Uwp.Xaml"
+    xmlns:converters="using:ResourceCraft.Uwp.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <converters:VisibilityConverter x:Key="VisibillityConverter" />
+        <converters:ColorConverter x:Key="ColorConverter" />
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <!-- Comment user photo -->
+        <HyperlinkButton Padding="0" Command="{x:Bind NavigateToUserCommand}">
+            <controls:AsyncPersonPicture
+                Grid.Column="0"
+                Grid.Row="0"
+                Grid.RowSpan="3"
+                Height="40"
+                Width="40"
+                File="{x:Bind Author.ProfilePicture, Mode=OneWay}"
+                VerticalAlignment="Top" />
+        </HyperlinkButton>
+        <!-- Comment username & date -->
+        <HyperlinkButton Grid.Column="1" Grid.Row="0" Command="{x:Bind NavigateToUserCommand}" Background="Transparent" Padding="0" >
+            <TextBlock Style="{StaticResource CaptionTextBlockStyle}">
+                <Run Text="{x:Bind Author.UserName, Mode=OneWay}" Foreground="{x:Bind Author.Color, Mode=OneWay, Converter={StaticResource ColorConverter}}"/>
+                <Run Text="·" Foreground="LightGray"/>
+                <Run Text="{x:Bind Reply.Created, Mode=OneWay}" Foreground="LightGray"/>
+            </TextBlock>
+        </HyperlinkButton>
+        
+        <!-- Comment body -->
+        <xaml:RichTextBox Grid.Column="1" Grid.Row="1" Rtf="{x:Bind Reply.Text, Mode=OneWay}"/>
+        <!-- Comment actions -->
+        <CommandBar Grid.Column="1" Grid.Row="2" Background="Transparent" OverflowButtonVisibility="Auto">
+            <CommandBar.Content>
+                <AppBarButton IsEnabled="False">
+                    <AppBarButton.Content>
+                        <TextBlock>
+                            <Run Text="{x:Bind Reply.NumberOfLikes, Mode=OneWay}" />
+                            <Run Text="likes" />
+                        </TextBlock>
+                    </AppBarButton.Content>
+                </AppBarButton>
+            </CommandBar.Content>
+            <AppBarButton Label="Like" Icon="Like" Command="{x:Bind LikeCommand, Mode=OneWay}" />
+            <AppBarButton Label="Reply" Icon="Comment" Command="{x:Bind ReplyCommand, Mode=OneWay}" />
+            <AppBarButton Label="Share" Icon="Share" Command="{x:Bind ShareCommand, Mode=OneWay}" />
+            <AppBarButton Label="Report" Icon="Flag" Command="{x:Bind ReportCommand, Mode=OneWay}" />
+        </CommandBar>
+        <controls:ReplyListView Replies="{x:Bind Reply.Replies, Mode=OneWay}" Grid.Column="1" Grid.Row="3" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,114 @@
+﻿<ContentDialog
+    x:Class="ResourceCraft.Uwp.Dialogs.BannerCroppingDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ResourceCraft.Uwp.Dialogs"
+    xmlns:converters="using:ResourceCraft.Uwp.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Crop"
+    PrimaryButtonText="Discard"
+    SecondaryButtonText="Save"
+    SecondaryButtonClick="{x:Bind ImageCropper.Save}">
+
+    <ContentDialog.Resources>
+        <converters:VisibilityConverter x:Key="VisibillityConverter" />
+    </ContentDialog.Resources>
+
+    <Viewbox>
+        <Grid
+            PointerMoved="{x:Bind ImageCropper.OnPointerMoved}"
+            Name="CropGrid"
+            Width="{x:Bind ImageCropper.Image.Width}"
+            Height="{x:Bind ImageCropper.Image.Height}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <!-- Original Image -->
+            <Image
+                Name="Image"
+                Opacity="0.50"
+                Grid.ColumnSpan="3"
+                Grid.RowSpan="3"
+                Source="{x:Bind ImageCropper.Image, Converter={StaticResource ImageConverter}}" 
+                Width="{x:Bind ImageCropper.Image.Width}"
+                Height="{x:Bind ImageCropper.Image.Height}"/>
+            <!-- Final Image -->
+            <Rectangle
+                Grid.Column="1"
+                Grid.Row="1"
+                Width="{x:Bind ImageCropper.Image.Crop.Width, Mode=OneWay}"
+                Height="{x:Bind ImageCropper.Image.Crop.Height, Mode=OneWay}">
+                <Rectangle.Fill>
+                    <ImageBrush Stretch="None" ImageSource="{x:Bind ImageCropper.Image, Converter={StaticResource ImageConverter}}" />
+                </Rectangle.Fill>
+            </Rectangle>
+            <!-- Crop lines -->
+            <Rectangle
+                Name="ImageCrop"
+                Grid.Column="1"
+                Grid.Row="1"
+                Width="{x:Bind ImageCropper.Image.Crop.Width, Mode=OneWay}"
+                Height="{x:Bind ImageCropper.Image.Crop.Height, Mode=OneWay}"
+                Fill="Transparent"
+                Stroke="Black"
+                StrokeThickness="2"
+                StrokeDashArray="5"
+                StrokeDashCap="Flat"
+            />
+            <!-- Crop handlers -->
+            <Ellipse
+                Name="CropHandleTopLeft"
+                Grid.Column="1"
+                Grid.Row="1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Width="{x:Bind ImageCropper.HandleSize, Mode=OneWay}"
+                Height="{x:Bind ImageCropper.HandleSize, Mode=OneWay}"
+                Fill="White"
+                Stroke="Black"
+                StrokeThickness="2"/>
+            <Ellipse
+                Name="CropHandleTopRight"
+                Grid.Column="1"
+                Grid.Row="1"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Width="{x:Bind ImageCropper.HandleSize, Mode=OneWay}"
+                Height="{x:Bind ImageCropper.HandleSize, Mode=OneWay}"
+                Fill="White"
+                Stroke="Black"
+                StrokeThickness="2"/>
+            <Ellipse
+                Name="CropHandleBottomLeft"
+                Grid.Column="1"
+                Grid.Row="1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Width="{x:Bind ImageCropper.HandleSize, Mode=OneWay}"
+                Height="{x:Bind ImageCropper.HandleSize, Mode=OneWay}"
+                Fill="White"
+                Stroke="Black"
+                StrokeThickness="2"/>
+            <Ellipse
+                Name="CropHandleBottomRight"
+                Grid.Column="1"
+                Grid.Row="1"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Width="{x:Bind ImageCropper.HandleSize, Mode=OneWay}"
+                Height="{x:Bind ImageCropper.HandleSize, Mode=OneWay}"
+                Fill="White"
+                Stroke="Black"
+                StrokeThickness="2"/>
+        </Grid>
+    </Viewbox>
+</ContentDialog>
